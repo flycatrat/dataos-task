@@ -1,0 +1,37 @@
+server:
+  port: 8056
+spring:
+  application:
+    name: dataos-task
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://dk-02.qa.hctin.com:3306/dataos?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull
+    username: hct
+    password: hct@libing(0314)
+    hikari:
+      minimum-idle: 5
+      idle-timeout: 180000
+      maximum-pool-size: 50
+      auto-commit: true
+      pool-name: MyHikariCP
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+  freemarker:
+    template-loader-path: classpath:/templates/ftl
+    cache: false
+    charset: utf-8
+    check-template-location: true
+    content-type: text/html
+    expose-request-attributes: false
+    expose-session-attributes: false
+    suffix: .ftl
+    request-context-attribute: request
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: mybatis/**/*.xml
+  type-aliases-package: com.dataos.generator.domain
+logging:
+  level:
+    root: info
